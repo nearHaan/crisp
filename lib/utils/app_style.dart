@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class AppStyle{
   static Color yellow = const Color(0xffffb406);
   static Color green = const Color(0xFF03733f);
   static Color grey = const Color(0xFFf1f1ef);
   static Color red = const Color(0xFFf4593b);
+  static Color blue = const Color(0xFF1e42a0);
 
   static TextStyle logoText = TextStyle(
     fontWeight: FontWeight.w700,

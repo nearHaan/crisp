@@ -3,14 +3,17 @@ import 'package:crisp/pages/home/widgets/location_card.dart';
 import 'package:crisp/utils/app_style.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class RubberBoardFacilities extends StatelessWidget {
   final List<String> locations;
   final List<List<String>> facilites;
-  const RubberBoardFacilities({
+  RubberBoardFacilities({
     super.key,
     required this.locations,
     required this.facilites
-});
+  });
+
+  TextEditingController textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +25,7 @@ class RubberBoardFacilities extends StatelessWidget {
           child: Column(
             children: [
               DropdownMenu(
+                controller: textEditingController,
                 width: double.infinity,
                 leadingIcon: Icon(Icons.location_pin),
                 label: Text('Current Location', style: AppStyle.smallText,),
