@@ -10,6 +10,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('Hello');
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppStyle.yellow,
