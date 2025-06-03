@@ -1,4 +1,5 @@
-import 'package:crisp/pages/home/widgets/grid_item.dart';
+import 'package:crisp/pages/home/widgets/rb_facilities.dart';
+import 'package:crisp/pages/home/widgets/site_specific.dart';
 import 'package:crisp/pages/login/widgets/home_top_box.dart';
 import 'package:crisp/utils/app_style.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,21 @@ class HomePage extends StatelessWidget {
     [4, 'Intercrops', 'assets/images/org_logo.png'],
     [5, 'Rubsis', 'assets/images/org_logo.png'],
     [6, 'Non-parasitic Disorders', 'assets/images/org_logo.png'],
+  ];
+
+  List<String> locations = [
+    'Thiruvananthapuram',
+    'Kollam',
+    'Kottayam'
+  ];
+
+  List<List<String>> facilites = [
+    ['Title 1', 'Subtitle 1'],
+    ['Title 2', 'Subtitle 2'],
+    ['Title 3', 'Subtitle 3'],
+    ['Title 4', 'Subtitle 4'],
+    ['Title 5', 'Subtitle 5'],
+    ['Title 6', 'Subtitle 6'],
   ];
 
   @override
@@ -46,49 +62,13 @@ class HomePage extends StatelessWidget {
           ],
         ),
         body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.all(10),
-            child: Column(
-              children: [
-                HomeTopBox(),
-                Container(
-                  padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: AppStyle.grey,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Site Specific Recommendations',
-                        style: AppStyle.mediumText.copyWith(color: Colors.black),
-                      ),
-                      SizedBox(height: 10,),
-                      GridView.count(
-                        shrinkWrap: true,
-                        crossAxisCount: 3,
-                        childAspectRatio: 1,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
-                        children: List.generate(
-                          6,
-                          (index){
-                            return GridItem(
-                                id: recList[index][0],
-                                title: recList[index][1],
-                                imagePath: recList[index][2],
-                                onClick: (){}
-                            );
-                          }
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
+          child: Column(
+            children: [
+              HomeTopBox(),
+              SiteSpecificRecommendations(recList: recList),
+              RubberBoardFacilities(locations: locations, facilites: facilites)
+            ]
+          )
         ),
       ),
     );
