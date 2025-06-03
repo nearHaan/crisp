@@ -19,7 +19,7 @@ class TopBox extends StatelessWidget {
               image: AssetImage('assets/images/org_logo.png'),
               height: 100,
               width: 100,
-              color: Color(0xFF03733f),
+              color: AppStyle.green,
             ),
             Text(
               'CRISP',

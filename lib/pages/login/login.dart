@@ -5,8 +5,8 @@ import 'package:crisp/pages/login/widgets/top_box.dart';
 import 'package:crisp/utils/app_style.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {

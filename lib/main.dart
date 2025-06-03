@@ -1,4 +1,4 @@
-import 'package:crisp/pages/login//login.dart';
+import 'package:crisp/pages/home/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
