@@ -1,7 +1,7 @@
-import 'package:crisp/pages/home/widgets/custom_text_input.dart';
-import 'package:crisp/pages/home/widgets/forgot_pass_box.dart';
-import 'package:crisp/pages/home/widgets/login_btn.dart';
-import 'package:crisp/pages/home/widgets/top_box.dart';
+import 'package:crisp/pages/login/widgets/custom_text_input.dart';
+import 'package:crisp/pages/login/widgets/forgot_pass_box.dart';
+import 'package:crisp/pages/login/widgets/login_btn.dart';
+import 'package:crisp/pages/login/widgets/top_box.dart';
 import 'package:crisp/utils/app_style.dart';
 import 'package:flutter/material.dart';
 
