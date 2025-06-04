@@ -13,6 +13,11 @@ class AppStyle{
     fontSize: 30
   );
 
+  static TextStyle weatherBigText = TextStyle(
+      color: Colors.white,
+      fontSize: 50
+  );
+
   static TextStyle mediumText = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.bold

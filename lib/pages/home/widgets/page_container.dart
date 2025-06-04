@@ -40,6 +40,7 @@ class PageContainer extends StatelessWidget {
           ),
           ListView.builder(
             shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
             itemCount: keys.length,
             itemBuilder: (context, index){
               print(values[keys[index]]);
