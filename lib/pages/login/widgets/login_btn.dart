@@ -2,15 +2,17 @@ import 'package:crisp/utils/app_style.dart';
 import 'package:flutter/material.dart';
 
 class LoginBtn extends StatelessWidget {
+  final Function onClick;
   const LoginBtn({
     super.key,
+    required this.onClick
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        //
+        onClick();
       },
       child: Container(
         decoration: BoxDecoration(

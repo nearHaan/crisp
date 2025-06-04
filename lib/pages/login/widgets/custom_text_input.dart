@@ -1,4 +1,5 @@
 import 'package:crisp/utils/app_style.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -7,11 +8,13 @@ class CustomTextInput extends StatelessWidget {
   final IconData icon;
   bool isPassword;
   bool hideText;
+  Function? onEyeClick;
   CustomTextInput({
     required this.title,
     required this.icon,
     this.isPassword = false,
     this.hideText = false,
+    this.onEyeClick,
     super.key,
   });
 
@@ -39,9 +42,9 @@ class CustomTextInput extends StatelessWidget {
         ),
         suffixIcon: isPassword?IconButton(
           onPressed: () {
-            //
+            onEyeClick!();
           },
-          icon: Icon(Icons.remove_red_eye),
+          icon: Icon(hideText?FluentIcons.eye_24_filled:FluentIcons.eye_off_24_filled),
         ):Text('')
       ),
     );
