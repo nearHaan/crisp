@@ -1,3 +1,4 @@
+import 'package:crisp/pages/home/widgets/long_fab.dart';
 import 'package:crisp/pages/home/widgets/rb_facilities.dart';
 import 'package:crisp/pages/home/widgets/rb_price_box.dart';
 import 'package:crisp/pages/home/widgets/site_specific.dart';
@@ -111,16 +112,65 @@ class HomePage extends StatelessWidget {
             )
           ],
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              HomeTopBox(),
-              SiteSpecificRecommendations(recList: recList),
-              RubberBoardFacilities(locations: locations, facilites: facilites),
-              RbPriceBox( pageController: pageController, pageMap: pageMap, pageKeys: pageKeys,),
-              WeatherContainer()
-            ]
-          )
+        body: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  HomeTopBox(),
+                  SiteSpecificRecommendations(recList: recList),
+                  RubberBoardFacilities(locations: locations, facilites: facilites),
+                  RbPriceBox( pageController: pageController, pageMap: pageMap, pageKeys: pageKeys,),
+                  WeatherContainer(),
+                  SizedBox(height: 200,)
+                ]
+              )
+            ),
+            Positioned(
+              left: 20,
+              bottom: 20,
+              child: FloatingActionButton(
+                onPressed: (){},
+                backgroundColor: AppStyle.yellow,
+                shape: CircleBorder(),
+                child: Icon(
+                  Icons.chat_bubble_rounded,
+                  color: Colors.white,
+                  size: 30,
+                ),
+              ),
+            ),
+            Positioned(
+              right: 20,
+              bottom: 100,
+              child: SizedBox(
+                width: 180,
+                child: FloatingActionButton(
+                  backgroundColor: Colors.transparent,
+                  child: LongFAB(
+                    icon: Icons.support_agent_rounded,
+                    text: 'Ask an agent',
+                  ),
+                  onPressed: (){},
+                ),
+              ),
+            ),
+            Positioned(
+              right: 20,
+              bottom: 20,
+              child: SizedBox(
+                width: 180,
+                child: FloatingActionButton(
+                  backgroundColor: Colors.transparent,
+                  child: LongFAB(
+                    icon: Icons.checklist_rounded,
+                    text: 'Soil Testing',
+                  ),
+                  onPressed: (){},
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

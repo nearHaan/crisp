@@ -39,13 +39,13 @@ class RbPriceBox extends StatelessWidget {
                 ),
                 SizedBox(height: 10,),
                 SizedBox(
-                  height: 200,
+                  height: 300,
                   child: PageView(
                     controller: pageController,
                     scrollDirection: Axis.horizontal,
                     children: List.generate(
                         pageMap.length,
-                            (index){
+                        (index){
                           return PageContainer(
                             pageTitle: pageKeys[index],
                             values: pageMap[pageKeys[index]]!,
