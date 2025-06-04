@@ -1,16 +1,21 @@
-import 'package:crisp/pages/home/widgets/long_fab.dart';
 import 'package:crisp/pages/home/widgets/rb_facilities.dart';
 import 'package:crisp/pages/home/widgets/rb_price_box.dart';
 import 'package:crisp/pages/home/widgets/site_specific.dart';
 import 'package:crisp/pages/home/widgets/weather_container.dart';
 import 'package:crisp/pages/login/widgets/home_top_box.dart';
 import 'package:crisp/utils/app_style.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class HomePage extends StatelessWidget {
-  HomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   List<List<dynamic>> recList = [
     [1, 'Clones', 'assets/images/org_logo.png'],
     [2, 'Planting Pits', 'assets/images/org_logo.png'],
@@ -80,10 +85,25 @@ class HomePage extends StatelessWidget {
   };
 
   PageController pageController = PageController();
+  bool _isExtended = true;
 
   @override
   Widget build(BuildContext context) {
     List<String> pageKeys = pageMap.keys.toList();
+    ScrollController scrollController = ScrollController();
+    scrollController.addListener(
+        (){
+          if(scrollController.offset>40){
+            setState(() {
+              _isExtended = false;
+            });
+          } else {
+            setState(() {
+              _isExtended = true;
+            });
+          }
+        }
+    );
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -115,6 +135,7 @@ class HomePage extends StatelessWidget {
         body: Stack(
           children: [
             SingleChildScrollView(
+              controller: scrollController,
               child: Column(
                 children: [
                   HomeTopBox(),
@@ -130,11 +151,12 @@ class HomePage extends StatelessWidget {
               left: 20,
               bottom: 20,
               child: FloatingActionButton(
+                heroTag: 'hero1',
                 onPressed: (){},
                 backgroundColor: AppStyle.yellow,
                 shape: CircleBorder(),
                 child: Icon(
-                  Icons.chat_bubble_rounded,
+                  FluentIcons.bot_24_filled,
                   color: Colors.white,
                   size: 30,
                 ),
@@ -143,31 +165,25 @@ class HomePage extends StatelessWidget {
             Positioned(
               right: 20,
               bottom: 100,
-              child: SizedBox(
-                width: 180,
-                child: FloatingActionButton(
-                  backgroundColor: Colors.transparent,
-                  child: LongFAB(
-                    icon: Icons.support_agent_rounded,
-                    text: 'Ask an agent',
-                  ),
-                  onPressed: (){},
-                ),
+              child: FloatingActionButton.extended(
+                heroTag: 'hero2',
+                label: Text('Ask an expert', style: TextStyle(color: Colors.white),),
+                icon: Icon(FluentIcons.person_support_24_filled, color: Colors.white,),
+                backgroundColor: AppStyle.green,
+                isExtended: _isExtended,
+                onPressed: (){},
               ),
             ),
             Positioned(
               right: 20,
               bottom: 20,
-              child: SizedBox(
-                width: 180,
-                child: FloatingActionButton(
-                  backgroundColor: Colors.transparent,
-                  child: LongFAB(
-                    icon: Icons.checklist_rounded,
-                    text: 'Soil Testing',
-                  ),
-                  onPressed: (){},
-                ),
+              child: FloatingActionButton.extended(
+                heroTag: 'hero3',
+                label: Text('Soil Testing', style: TextStyle(color: Colors.white),),
+                icon: Icon(FluentIcons.check_24_regular, color: Colors.white,),
+                backgroundColor: AppStyle.green,
+                isExtended: _isExtended,
+                onPressed: (){},
               ),
             ),
           ],
