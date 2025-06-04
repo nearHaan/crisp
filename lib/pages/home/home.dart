@@ -6,6 +6,7 @@ import 'package:crisp/pages/home/widgets/site_specific.dart';
 import 'package:crisp/pages/login/widgets/home_top_box.dart';
 import 'package:crisp/utils/app_style.dart';
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 // ignore: must_be_immutable
 class HomePage extends StatelessWidget {
@@ -79,6 +80,8 @@ class HomePage extends StatelessWidget {
     }
   };
 
+  PageController pageController = PageController();
+
   @override
   Widget build(BuildContext context) {
     List pageKeys = pageMap.keys.toList();
@@ -139,6 +142,7 @@ class HomePage extends StatelessWidget {
                         SizedBox(
                           height: 200,
                           child: PageView(
+                            controller: pageController,
                             scrollDirection: Axis.horizontal,
                             children: List.generate(
                               pageMap.length,
@@ -150,6 +154,16 @@ class HomePage extends StatelessWidget {
                               }
                             ),
                           ),
+                        ),
+                        SizedBox(height: 10,),
+                        SmoothPageIndicator(
+                          controller: pageController,
+                          count:  pageKeys.length,
+                          effect:  ScrollingDotsEffect(
+                            dotHeight: 10,
+                            dotWidth: 10,
+                            activeDotColor: AppStyle.blue,
+                          )
                         )
                       ],
                     )
